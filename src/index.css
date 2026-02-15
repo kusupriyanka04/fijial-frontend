@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(to right, #fff5f5, #ffe3e3);
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* body { font-family: Arial; margin: 0; }
+.nav { background: #222; padding: 10px; }
+.nav a { color: white; margin-right: 10px; text-decoration: none; }
+.form { max-width: 300px; margin: 40px auto; display: flex; flex-direction: column; gap: 10px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+.card { border: 1px solid #ddd; padding: 15px; }
+input, button { padding: 8px; } */
