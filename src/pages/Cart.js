@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import api from "../api/axios";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -20,7 +21,7 @@ export default function Cart() {
   const placeOrder = async () => {
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     try {
-      await axios.post('http://localhost:5000/api/orders', {
+      await axios.post('/orders', {
         user_id: userId,
         items: cart,
         total
@@ -49,3 +50,4 @@ export default function Cart() {
     </div>
   );
 }
+
