@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import api from "../api/axios";
 import OrderTracking from "../components/OrderTracking";
 // import { useCart } from "../context/CartContext";
@@ -13,9 +13,10 @@ export default function Orders() {
   const role = localStorage.getItem("role");
 
   // Fetch orders from backend
-  const fetchOrders = (async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       const res = await api.get(role === "admin" ? "/admin/orders" : "/orders");
+      const res = await api.get("/orders");
       setOrders(res.data);
     } catch (err) {
       console.error(err);
@@ -104,3 +105,4 @@ export default function Orders() {
     </div>
   );
 }
+
