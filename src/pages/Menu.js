@@ -78,7 +78,7 @@ export default function Menu() {
               {/* Product Info */}
               <div className="p-4">
                 <h3
-                  className="font-semibold text -lg truncate cursor-pointer hover:text-zomato"
+                  className="font-semibold text-lg truncate cursor-pointer hover:text-zomato"
                   onClick={() => navigate(`/restaurant/${p.restaurant}`)}
                 >
                   {p.name}
@@ -132,3 +132,4 @@ export default function Menu() {
     </div>
   );
 }
+
