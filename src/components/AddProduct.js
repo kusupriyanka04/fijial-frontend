@@ -32,7 +32,7 @@ export default function AddProduct({ fetchProducts }) {
 
     console.log("Sending payload:", payload);
     try {
-      await api.post("admin/products", product);
+      await api.post("admin/products", payload);
       alert("Product added successfully");
       fetchProducts();
       setProduct({
@@ -129,3 +129,4 @@ export default function AddProduct({ fetchProducts }) {
     </form>
   );
 }
+
