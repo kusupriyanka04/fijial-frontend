@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import api from "../api/axios";
+import {jwtDecode} from 'jwt-decode';
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const userId = 1; // Replace with actual user ID from JWT
+  const userId = token ? jwtDecode(token).id : null; // Replace with actual user ID from JWT
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -50,4 +51,5 @@ export default function Cart() {
     </div>
   );
 }
+
 
