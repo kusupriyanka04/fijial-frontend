@@ -6,8 +6,13 @@ export default function Register() {
 
   const submit = async (e) => {
     e.preventDefault();
+   try {
     await api.post("/auth/register", form);
-    alert("Registered successfully");
+    toast.success("Registered successfully!");
+    navigate("/login");
+  } catch (err) {
+  toast.error(err.response?.data?.error || "Registration failed");
+  }
   };
 
   return (
@@ -42,4 +47,5 @@ export default function Register() {
     </div>
   );
 }
+
 
