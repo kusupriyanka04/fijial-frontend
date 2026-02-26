@@ -1,4 +1,3 @@
-// import "./App.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -12,6 +11,15 @@ import Orders from "./pages/Orders";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Restaurant from "./pages/Restaurant";
+
+function ProtectedAdminRoute() {
+  const role = localStorage.getItem("role");
+  const token = localStorage.getItem("token");
+
+  if (!token) return <Navigate to="/login" />;
+  if (role !== "admin") return <Navigate to="/" />;
+  return <Admin />;
+}
 
 function App() {
   return (
@@ -27,8 +35,7 @@ function App() {
           <Route path="/restaurant/:name" element={<Restaurant/>}/>
           <Route path="/menu" element={<Menu />} />
           <Route path="/admin" element={
-              localStorage.getItem("role") === "admin" ? (
-                <Admin />) : ( <Navigate to="/login" /> )
+              <ProtectedAdminRoute />
             }
           />
           <Route path="/checkout" element={<Checkout />} />
