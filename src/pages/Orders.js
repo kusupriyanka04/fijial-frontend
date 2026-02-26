@@ -15,8 +15,8 @@ export default function Orders() {
   // Fetch orders from backend
   const fetchOrders = useCallback(async () => {
     try {
-      // const res = await api.get(role === "admin" ? "/admin/orders" : "/orders");
-      const res = await api.get("/orders");
+      const res = await api.get(role === "admin" ? "/admin/orders" : "/orders");
+      //  const res = await api.get("/orders");
       setOrders(res.data);
     } catch (err) {
       console.error(err);
@@ -105,5 +105,6 @@ export default function Orders() {
     </div>
   );
 }
+
 
 
